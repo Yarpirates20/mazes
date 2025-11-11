@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 enable_testing()
 
 add_executable(main src/main.cpp)
-target_include_directories(main PUBLIC include)
+target_include_directories(main PUBLIC src)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -19,8 +19,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Test executable
-add_executable(tests tests/test1.cpp)
-target_include_directories(tests PUBLIC include)
+add_executable(tests tests/CellFunctionalityTests.cpp)
+target_include_directories(tests PUBLIC src)
 target_link_libraries(tests gtest_main)
 
 add_test(NAME test1 COMMAND tests)
