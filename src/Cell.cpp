@@ -45,3 +45,11 @@ bool Cell::is_linked(Cell *cell) const
 {
     return links.find(cell) != links.end();
 }
+
+/** @copydoc Cell::linked_cells() */
+std::vector<Cell *> Cell::linked_cells() const
+{
+    std::vector<Cell*> v(links.begin(), links.end());
+
+    return v;
+}

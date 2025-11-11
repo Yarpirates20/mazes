@@ -2,7 +2,7 @@
 #define CELL_H
 
 #include <unordered_set>
-
+#include <vector>
 /**
  * @brief A cell in the maze grid.
  *
@@ -62,5 +62,12 @@ public:
      * @return false False if not linked.
      */
     bool is_linked(Cell *cell) const;
+
+    /**
+     * @brief Gets all the cells linked to this cell.
+     * 
+     * @return std::vector<Cell*> A vector copy of pointers to linked Cells.
+     */
+    std::vector<Cell*> linked_cells() const;
 };
 #endif
