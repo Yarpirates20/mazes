@@ -69,5 +69,16 @@ public:
      * @return std::vector<Cell*> A vector copy of pointers to linked Cells.
      */
     std::vector<Cell*> linked_cells() const;
+
+    /**
+     * @brief Gets a list of a cell's neighbors.
+     * 
+     * @return std::vector<Cell*> Vector of pointers to neighbor cells, listed 
+     * in order: North, East, South, West.
+     * 
+     * Note: use iteration or presence checks and do not rely on hardcoded 
+     * indices as nullptr neighbors are not pushed to vector.
+     */
+    std::vector<Cell*> neighbors() const;
 };
 #endif
