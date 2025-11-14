@@ -15,14 +15,15 @@ private:
     int row;
     int column;
 
+    std::unordered_set<Cell *> links;
+
+public:
+    
     Cell *north;
     Cell *east;
     Cell *south;
     Cell *west;
 
-    std::unordered_set<Cell *> links;
-
-public:
     /**
      * @brief Default constructor.
      *
@@ -31,7 +32,7 @@ public:
 
     /**
      * @brief Construct a Cell object with coordinates.
-     * 
+     *
      * @param r Row coordinates.
      * @param c Column coordinates.
      */
@@ -39,7 +40,7 @@ public:
 
     /**
      * @brief Link this cell to another.
-     * 
+     *
      * @param cell Pointer to the other cell to link to.
      * @param bidi If true, create a bidirectional link (default: true).
      * @return Cell* Pointer to this cell (allows chaining).
@@ -48,7 +49,7 @@ public:
 
     /**
      * @brief Remove a link to another cell.
-     * 
+     *
      * @param cell Pointer to the cell to unlink.
      * @param bidi If true, remove the reverse link too (default: true).
      */
@@ -56,7 +57,7 @@ public:
 
     /**
      * @brief Check whether this cell is linked to another.
-     * 
+     *
      * @param cell Pointer to the cell to check.
      * @return true True if linked.
      * @return false False if not linked.
@@ -65,20 +66,20 @@ public:
 
     /**
      * @brief Gets all the cells linked to this cell.
-     * 
+     *
      * @return std::vector<Cell*> A vector copy of pointers to linked Cells.
      */
-    std::vector<Cell*> linked_cells() const;
+    std::vector<Cell *> linked_cells() const;
 
     /**
      * @brief Gets a list of a cell's neighbors.
-     * 
-     * @return std::vector<Cell*> Vector of pointers to neighbor cells, listed 
+     *
+     * @return std::vector<Cell*> Vector of pointers to neighbor cells, listed
      * in order: North, East, South, West.
-     * 
-     * Note: use iteration or presence checks and do not rely on hardcoded 
+     *
+     * Note: use iteration or presence checks and do not rely on hardcoded
      * indices as nullptr neighbors are not pushed to vector.
      */
-    std::vector<Cell*> neighbors() const;
+    std::vector<Cell *> neighbors() const;
 };
 #endif

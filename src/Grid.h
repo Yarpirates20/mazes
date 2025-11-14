@@ -12,6 +12,7 @@ class Grid
     private:
         int rows;
         int columns;
+        std::vector<std::vector<Cell*>> grid;
 
     public:
         /**
@@ -30,7 +31,17 @@ class Grid
          */
         Grid(int r, int c);
 
+        /**
+         * @brief Sets up 2D array of Cell instances.
+         * 
+         */
         void prepare_grid();
+
+        /**
+         * @brief Tells each cell who its immediate neighbors are to North, 
+         * South, East, and West.
+         * 
+         */
         void configure_cells();
 };
 
