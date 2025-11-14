@@ -12,9 +12,9 @@ void Grid::prepare_grid()
 {
     grid = std::vector<std::vector<Cell *>>(rows, std::vector<Cell *>(columns));
 
-    for(int i = 0; i < rows; ++i)
+    for (int i = 0; i < rows; ++i)
     {
-        for(int j = 0; j < columns; ++j)
+        for (int j = 0; j < columns; ++j)
         {
             grid[i][j] = new Cell(i, j);
         }
@@ -24,6 +24,28 @@ void Grid::prepare_grid()
 /** @copydoc Grid::configure_cells() */
 void Grid::configure_cells()
 {
-    
-    
+    for (int r = 0; r < rows; ++r)
+    {
+        for (int c = 0; c < columns; ++c)
+        {
+            Cell *curr = grid[r][c];
+            curr->north = atrc(r - 1, c);
+            curr->south = atrc(r + 1, c);
+            curr->west = atrc(r, c - 1);
+            curr->east = atrc(r, c + 1);
+        }
+    }
+}
+
+/** @copydoc *Grid::atrc(int r, int c) */
+Cell *Grid::atrc(int r, int c)
+{
+    if (r < 0 || r >= rows || c < 0 || c >= columns)
+    {
+        return nullptr;
+    }
+
+    Cell *ptr = grid[r][c];
+
+    return ptr;
 }

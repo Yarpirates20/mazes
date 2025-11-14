@@ -81,3 +81,15 @@ std::vector<Cell *> Cell::neighbors() const
     }
     return v;
 }
+
+/** @copydoc Cell::get_row const */
+int Cell::get_row() const
+{
+    return row;
+}
+
+/** @copydoc Cell::get_column const */
+int Cell::get_column() const
+{
+    return column;
+}

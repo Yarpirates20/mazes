@@ -81,7 +81,18 @@ public:
      */
     std::vector<Cell *> neighbors() const;
 
+    /**
+     * @brief Get the row number for a Cell.
+     * 
+     * @return int Row number.
+     */
     int get_row() const;
+
+    /**
+     * @brief Get the column number.
+     * 
+     * @return int Column.
+     */
     int get_column() const;
 };
 #endif
