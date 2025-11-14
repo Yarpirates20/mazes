@@ -18,7 +18,6 @@ private:
     std::unordered_set<Cell *> links;
 
 public:
-    
     Cell *north;
     Cell *east;
     Cell *south;
@@ -81,5 +80,8 @@ public:
      * indices as nullptr neighbors are not pushed to vector.
      */
     std::vector<Cell *> neighbors() const;
+
+    int get_row() const;
+    int get_column() const;
 };
 #endif
