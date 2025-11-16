@@ -19,7 +19,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Test executable
-add_executable(tests tests/CellFunctionalityTests.cpp src/Cell.cpp tests/GridFunctionalityTests.cpp src/Grid.cpp)
+add_executable(tests tests/CellFunctionalityTests.cpp src/Cell.cpp tests/GridFunctionalityTests.cpp src/Grid.cpp tests/BinaryTreeFunctionality.cpp src/BinaryTree.cpp)
 target_include_directories(tests PUBLIC src)
 target_link_libraries(tests gtest_main)
 

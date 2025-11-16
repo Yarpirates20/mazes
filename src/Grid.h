@@ -108,6 +108,44 @@ public:
         for (const auto &row : grid)
             fn(row);
     }
+
+    /**
+     * @brief Invoke callable for each cell.
+     *
+     * @tparam Func Function/function-like object.
+     * @param fn    The function to call.
+     */
+    template <typename Func>
+    void each_cell(Func &&fn)
+    {
+        each_row([&fn](Grid::Row &row)
+                 {
+            for (Cell* c : row)
+            {
+                fn(c);
+            } });
+    }
+
+    /**
+     * @brief Const: Invoke callable for each cell.
+     *
+     * @tparam Func Function/function-like object.
+     * @param fn    The function to call.
+     */
+    template <typename Func>
+    void each_cell(Func &&fn) const
+    {
+        // const overload
+        each_row([&fn](const Grid::Row &row)
+                 {
+                     for (Cell* c : row)
+                     {
+                         fn(c);
+                     } });
+    }
+
+    int get_rows() { return rows; }
+    int get_cols() { return columns; }
 };
 
 #endif // GRID_H

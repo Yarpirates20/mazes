@@ -5,14 +5,14 @@
 
 using namespace ::testing;
 
-class ABasicGridCollection: public Test
+class ABasicGridCollection : public Test
 {
-    public:
-        Grid grid;
-        Grid grid2;
-        Grid grid3;
+public:
+    Grid grid;
+    Grid grid2;
+    Grid grid3;
 
-        ABasicGridCollection() : grid(2, 2), grid2(5, 5), grid3(6, 8) {}
+    ABasicGridCollection() : grid(2, 2), grid2(5, 5), grid3(6, 8) {}
 };
 
 TEST_F(ABasicGridCollection, CreateASingleGrid)
@@ -31,17 +31,16 @@ TEST_F(ABasicGridCollection, RetrievesACell)
 
 TEST_F(ABasicGridCollection, IteratesCellsInRow)
 {
-    grid.each_row([](Grid::Row &row) {
-        for (Cell* c: row)
-        {
-            std::cout << "Found a Cell!\n"; 
-        }
-    });
+    grid.each_cell([](Cell *c)
+                   {
+        ASSERT_NE(c, nullptr);
+        std::cout << "Found cell!\n"; });
 }
 
 TEST_F(ABasicGridCollection, IteratesRows)
 {
-    grid2.each_row([](Grid::Row &row) {
-        std::cout << "Found row!\n";
-    });
+    grid.each_cell([](Cell *c)
+                   {
+        ASSERT_NE(c, nullptr);
+        std::cout << "Found cell!\n"; });
 }
