@@ -2,6 +2,7 @@
 #define GRID_H
 
 #include "Cell.h"
+#include <vector>
 
 /**
  * @brief A 2D array of Cell objects.
@@ -62,9 +63,51 @@ public:
 
     /**
      * @brief Accesor for size of grid.
-     * 
+     *
      * @return int Integer number of cells in grid.
      */
     int size();
+
+    /**
+     * Iterator types to iterate over rows (each row is std::vector<Cell*>).
+     */
+    using Row = std::vector<Cell *>;
+    using iterator = std::vector<Row>::iterator;
+    using const_iterator = std::vector<Row>::const_iterator;
+
+    // begin/end for range-based for and STL algorithms
+    iterator begin() { return grid.begin(); }
+    iterator end() { return grid.end(); }
+    const_iterator begin() const { return grid.cbegin(); }
+    const_iterator end() const { return grid.cend(); }
+    const_iterator cbegin() const { return grid.cbegin(); }
+    const_iterator cend() const { return grid.cend(); }
+
+    /**
+     * @brief Invoke callable for each row.
+     *
+     * @tparam Func Function/function-like object.
+     * @param fn    The function to call.
+     */
+    template <typename Func>
+    void each_row(Func &&fn)
+    {
+        for (auto &row : grid)
+            fn(row);
+    }
+
+    /**
+     * @brief Const: Invoke callable for each row.
+     *
+     * @tparam Func Function/function-like object.
+     * @param fn    The function to call.
+     */
+    template <typename Func>
+    void each_row(Func &&fn) const
+    {
+        for (const auto &row : grid)
+            fn(row);
+    }
 };
+
 #endif // GRID_H
