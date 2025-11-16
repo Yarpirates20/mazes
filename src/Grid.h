@@ -46,12 +46,25 @@ public:
 
     /**
      * @brief Safe accessor.
-     * 
+     *
      * @param r Row to check.
      * @param c Column to check.
      * @return Cell* A pointer to a cell if valid, else nullptr.
      */
-    Cell* atrc(int r, int c);
-};
+    Cell *atrc(int r, int c);
 
+    /**
+     * @brief Returns a random cell at random row, random column.
+     *
+     * @return Cell* A pointer to random cell.
+     */
+    Cell *random_cell();
+
+    /**
+     * @brief Accesor for size of grid.
+     * 
+     * @return int Integer number of cells in grid.
+     */
+    int size();
+};
 #endif // GRID_H

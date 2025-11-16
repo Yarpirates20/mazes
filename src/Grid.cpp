@@ -1,5 +1,7 @@
 #include "Grid.h"
 
+#include <random>
+
 /** @copydoc Grid::Grid(int r, int c) */
 Grid::Grid(int r, int c) : rows(r), columns(c)
 {
@@ -37,7 +39,7 @@ void Grid::configure_cells()
     }
 }
 
-/** @copydoc *Grid::atrc(int r, int c) */
+/** @copydoc Grid::atrc(int r, int c) */
 Cell *Grid::atrc(int r, int c)
 {
     if (r < 0 || r >= rows || c < 0 || c >= columns)
@@ -48,4 +50,23 @@ Cell *Grid::atrc(int r, int c)
     Cell *ptr = grid[r][c];
 
     return ptr;
+}
+
+/** @copydoc Grid::random_cell() */
+Cell *Grid::random_cell()
+{
+    if (rows == 0 || columns == 0)
+    {
+        return nullptr;
+    }
+
+    int r = rand() % rows;
+    int c = rand() % columns;
+
+    return grid[r][c];
+}
+
+int Grid::size()
+{
+    return rows * columns;
 }
