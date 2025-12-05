@@ -3,6 +3,7 @@
 
 #include "Cell.h"
 #include <vector>
+#include <iostream>
 
 /**
  * @brief A 2D array of Cell objects.
@@ -146,6 +147,13 @@ public:
 
     int get_rows() { return rows; }
     int get_cols() { return columns; }
+
+    /**
+     * @brief Overloaded output stream operator to print grid.
+     * 
+     * @return std::ostream& Stream to output to.
+     */
+    friend std::ostream &operator << (std::ostream &, const Grid &);
 };
 
 #endif // GRID_H

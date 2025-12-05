@@ -44,3 +44,11 @@ TEST_F(ABasicGridCollection, IteratesRows)
         ASSERT_NE(c, nullptr);
         std::cout << "Found cell!\n"; });
 }
+
+TEST_F(ABasicGridCollection, PrintsGrid)
+{
+    std::cout << grid << "\n";
+    std::cout << grid2 << "\n";
+    std::cout << grid3 << "\n";
+
+}

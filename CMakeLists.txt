@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 enable_testing()
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp src/Cell.cpp src/Grid.cpp src/BinaryTree.cpp)
 target_include_directories(main PUBLIC src)
 
 include(FetchContent)

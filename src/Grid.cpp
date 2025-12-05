@@ -66,7 +66,63 @@ Cell *Grid::random_cell()
     return grid[r][c];
 }
 
+/** @copydoc Grid::size() */
 int Grid::size()
 {
     return rows * columns;
+}
+
+/** @copydoc Grid::operator<< */
+std::ostream &operator<<(std::ostream &strm, const Grid &obj)
+{
+    strm << "+";
+
+    for (int i = 0; i < obj.columns; ++i)
+    {
+        strm << "---+";
+    }
+
+    strm << "\n";
+
+    // each row
+    obj.each_row([&strm](const Grid::Row &row)
+                 {
+        std::string top = "|";
+        std::string bottom = "+";
+
+        for (Cell *cell : row)
+        {
+            // If cell is null, use temp dummy cell to safely
+            // query neighbors/links
+            Cell dummy(-1, -1);
+            Cell *c = cell ? cell : &dummy;
+
+            // Body is 3 spaces
+            std::string body = "   ";
+
+            // East boundary: space if linked, otherwise wall '|'
+            bool east_open = false;
+            if (c->east)
+            {
+                east_open = c->is_linked(c->east);
+            }
+
+            top += body + (east_open ? " " : "|");
+
+            // South boundary: 3 spaces if linked, else '---'
+            bool south_open = false;
+            if (c->south)
+            {
+                south_open = c->is_linked(c->south);
+            }
+
+            bottom += (south_open ? "   " : "---");
+            bottom += "+";
+        } 
+
+        strm << top << "\n";
+        strm << bottom << "\n";
+     });
+
+    return strm;
 }
