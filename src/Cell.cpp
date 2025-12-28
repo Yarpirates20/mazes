@@ -36,3 +36,46 @@ Cell &Cell::unlink(Cell *other, bool bidirectional)
 
     return *this;
 }
+
+/** @copydoc Cell::get_links() const */
+std::vector<Cell *> Cell::get_links() const
+{
+    return std::vector<Cell *>(this->links.begin(), this->links.end());
+}
+
+/** @copydoc Cell::is_linked(const Cell *other) const */
+bool Cell::is_linked(const Cell *other) const
+{
+    if (other != nullptr && other != this)
+        return true;
+
+    return false;
+}
+
+/** @copydoc Cell::neighbors() */
+std::vector<Cell *> Cell::neighbors()
+{
+    std::vector<Cell *> neighbor_vec;
+    if (this->north)
+    {
+        neighbor_vec.push_back(north);
+    }
+
+    if (this->east)
+    {
+        neighbor_vec.push_back(east);
+    }
+
+    if (this->south)
+    {
+        neighbor_vec.push_back(south);
+    }
+
+    if (this->west)
+    {
+        neighbor_vec.push_back(west);
+    }
+
+
+    return neighbor_vec;
+}

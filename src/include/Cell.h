@@ -51,6 +51,30 @@ public:
      * @return Cell& Reference to object operated on.
      */
     Cell &unlink(Cell *other, bool bidirectional = true);
+
+    /**
+     * @brief Const accessor that returns a copy of the other Cell objects that 
+     * this cell is linked to.
+     * 
+     * @return std::vector<Cell *> Vector copy of links.
+     */
+    std::vector<Cell *> get_links() const;
+
+    /**
+     * @brief Queries whether current cell is linked to a given cell.
+     * 
+     * @param other Cell to check if self is linked to.
+     * @return true If other is non-null and present in links.
+     * @return false If not present in links.
+     */
+    bool is_linked(const Cell* other) const;
+
+    /**
+     * @brief Gets a list of cells that adjoin current cell.
+     * 
+     * @return std::vector<Cell *> Vector of neighboring cells.
+     */
+    std::vector<Cell *> neighbors();
 };
 
 #endif // CELL_H
