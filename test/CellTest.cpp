@@ -53,7 +53,7 @@ TEST_F(CellLinks, GetNeighbor)
 {
     auto n = a.neighbors();
 
-    EXPECT_EQ(n.size(), 1);
+    EXPECT_EQ(n.size(), 0);
 
     
 

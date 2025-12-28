@@ -52,9 +52,11 @@ bool Cell::is_linked(const Cell *other) const
 }
 
 /** @copydoc Cell::neighbors() */
-std::vector<Cell *> Cell::neighbors()
+std::vector<Cell *> Cell::neighbors() const
 {
     std::vector<Cell *> neighbor_vec;
+    neighbor_vec.reserve(4);
+    
     if (this->north)
     {
         neighbor_vec.push_back(north);

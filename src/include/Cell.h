@@ -74,7 +74,7 @@ public:
      * 
      * @return std::vector<Cell *> Vector of neighboring cells.
      */
-    std::vector<Cell *> neighbors();
+    std::vector<Cell *> neighbors() const;
 
     /**
      * @brief Gets number of links for cell.
