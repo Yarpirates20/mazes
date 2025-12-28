@@ -46,10 +46,9 @@ std::vector<Cell *> Cell::get_links() const
 /** @copydoc Cell::is_linked(const Cell *other) const */
 bool Cell::is_linked(const Cell *other) const
 {
-    if (other != nullptr && other != this)
-        return true;
+    if (other == nullptr) return false;
 
-    return false;
+    return this->links.find(const_cast<Cell *>(other)) != this->links.end();
 }
 
 /** @copydoc Cell::neighbors() */
