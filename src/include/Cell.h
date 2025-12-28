@@ -75,6 +75,13 @@ public:
      * @return std::vector<Cell *> Vector of neighboring cells.
      */
     std::vector<Cell *> neighbors();
+
+    /**
+     * @brief Gets number of links for cell.
+     * 
+     * @return std::size_t Number of links.
+     */
+    std::size_t links_count() const;
 };
 
 #endif // CELL_H

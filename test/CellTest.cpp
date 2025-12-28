@@ -1,9 +1,18 @@
 #include "Cell.h"
 #include <gtest/gtest.h>
 
-TEST(CellLinks, LinkAndUnlinkBidirectional)
+using namespace ::testing;
+
+class ACellCollection: public Test
 {
-    Cell a(0,0), b(0,1);
+    public:
+        Cell a{0,0};
+        Cell b{0, 1};
+};
+
+TEST_F(ACellCollection, LinkAndUnlinkBidirectional)
+{
+    // Cell a(0,0), b(0,1);
     a.link(&b);
     EXPECT_TRUE(true);
 }

@@ -79,3 +79,9 @@ std::vector<Cell *> Cell::neighbors()
 
     return neighbor_vec;
 }
+
+/** @copydoc Cell::links_count() const */
+std::size_t Cell::links_count() const
+{
+    return this->links.size();
+}
