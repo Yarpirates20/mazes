@@ -1,5 +1,6 @@
 #include "include/Grid.h"
 #include <stdexcept>
+#include <random>
 
 /** @copydoc Grid::prepare_grid() */
 void Grid::prepare_grid()
@@ -46,6 +47,19 @@ Cell &Grid::atrc(int r, int c) const
 int Grid::get_size()
 {
     return rows * columns;
+}
+
+/** @copydoc Grid::random_cell() */
+Cell &Grid::random_cell()
+{
+    std::random_device rnd;
+    std::uniform_int_distribution<int> row_dist{0, rows - 1};
+    std::uniform_int_distribution<int> col_dist{0, columns - 1};
+    
+    int random_row = row_dist(rnd);
+    int random_col = col_dist(rnd);
+
+    return atrc(random_row, random_col);
 }
 
 /** @copydoc Grid::for_each_row(FUNC &&fn) */
