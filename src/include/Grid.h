@@ -23,7 +23,11 @@ public:
      * @param r Number of rows.
      * @param c Number of columns.
      */
-    Grid(int r, int c) : rows(r), columns(c), grid(r, std::vector<Cell *>(c, nullptr)) { prepare_grid(); }
+    Grid(int r, int c) : rows(r), columns(c), grid(r, std::vector<Cell *>(c, nullptr))
+    {
+        prepare_grid();
+        configure_cells();
+    }
 
     /**
      * @brief Prepares a 2D vector of Cell instances.
@@ -78,7 +82,11 @@ public:
      * @param fn Function to call.
      */
     template <typename FUNC>
-    void for_each_row(FUNC &&fn);
+    void for_each_row(FUNC &&fn)
+    {
+        for (auto &row : grid)
+            fn(row);
+    }
 
     /**
      * @brief Const template function that calls fn(row) for each row.
@@ -87,7 +95,11 @@ public:
      * @param fn Function to call.
      */
     template <typename FUNC>
-    void for_each_row(FUNC &&fn) const;
+    void for_each_row(FUNC &&fn) const
+    {
+        for (auto &row : grid)
+            fn(row);
+    }
 
     /**
      * @brief Template function that calls fn(cell) for each cell in each
@@ -97,7 +109,14 @@ public:
      * @param fn Function to call.
      */
     template <typename FUNC>
-    void for_each_cell(FUNC &&fn);
+    void for_each_cell(FUNC &&fn)
+    {
+        for_each_row([&fn](auto &row)
+                     {
+        for (Cell *c : row)
+            if (c) 
+                fn(*c); });
+    }
 
     /**
      * @brief Const template function that calls fn(cell) for each cell
@@ -107,7 +126,14 @@ public:
      * @param fn Function to call.
      */
     template <typename FUNC>
-    void for_each_cell(FUNC &&fn) const;
+    void for_each_cell(FUNC &&fn) const
+    {
+        for_each_row([&fn](auto const &row)
+                     {
+        for (Cell const *c : row)
+            if (c) 
+                fn(*c); });
+    }
 };
 
 #endif // GRID_H
