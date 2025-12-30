@@ -84,3 +84,35 @@ Cell &Grid::random_cell()
     return atrc(random_row, random_col);
 }
 
+/** @copydoc operator<<(std::ostream &os, const Grid &g) */
+std::ostream &operator<<(std::ostream &os, const Grid &g)
+{
+    // Top boundary
+    os << "+";
+    for (int i = 0; i < g.columns; ++i)
+    {
+        os << "---+";
+    }
+    os << "\n";
+
+    g.for_each_row([&os](const std::vector<Cell *> &row)
+                   {
+        std::string top = "|";
+        std::string bottom = "+";
+
+        for (Cell *cell : row)
+        {
+            bool east_open = cell && cell->east && cell->is_linked(cell->east);
+            bool south_open = cell && cell->south && cell->is_linked(cell->south);
+
+            top += "   ";
+            top += (east_open ? " " : "|");
+
+            bottom += (south_open ? "   " : "---");
+            bottom += "+";
+        }
+
+        os << top << "\n" << bottom << "\n"; });
+
+    return os;
+}

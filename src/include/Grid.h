@@ -3,6 +3,7 @@
 
 #include "Cell.h"
 #include <vector>
+#include <iostream>
 
 /**
  * @brief Grid is wrapper for a 2D array of Cells.
@@ -134,6 +135,15 @@ public:
             if (c) 
                 fn(*c); });
     }
+
+    /**
+     * @brief Overloaded insertion operator to print out grid.
+     * 
+     * @param os Stream to ouput to.
+     * @param g  Grid.
+     * @return std::ostream& Output stream. 
+     */
+    friend std::ostream& operator <<(std::ostream &os, const Grid& g);
 };
 
 #endif // GRID_H
