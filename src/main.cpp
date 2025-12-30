@@ -11,7 +11,7 @@ using std::vector;
 
 int main()
 {
-    Grid g(6, 6);
+    Grid g(7, 10);
     BinaryTree bin_tree;
     bin_tree.on(g);
 
