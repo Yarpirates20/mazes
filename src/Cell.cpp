@@ -86,3 +86,15 @@ std::size_t Cell::links_count() const
 {
     return this->links.size();
 }
+
+/** @copydoc Cell::get_row() */
+int Cell::get_row()
+{
+    return row;
+}
+
+/** @copydoc Cell::get_col() */
+int Cell::get_col()
+{
+    return column;
+}

@@ -18,14 +18,14 @@ private:
     int row,
         column;
 
+    std::unordered_set<Cell *> links;
+
+public:
     Cell *north,
         *east,
         *south,
         *west;
-
-    std::unordered_set<Cell *> links;
-
-public:
+        
     /**
      * @brief Cell constructor starts with no neighbors or links
      *
@@ -53,35 +53,49 @@ public:
     Cell &unlink(Cell *other, bool bidirectional = true);
 
     /**
-     * @brief Const accessor that returns a copy of the other Cell objects that 
+     * @brief Const accessor that returns a copy of the other Cell objects that
      * this cell is linked to.
-     * 
+     *
      * @return std::vector<Cell *> Vector copy of links.
      */
     std::vector<Cell *> get_links() const;
 
     /**
      * @brief Queries whether current cell is linked to a given cell.
-     * 
+     *
      * @param other Cell to check if self is linked to.
      * @return true If other is non-null and present in links.
      * @return false If not present in links.
      */
-    bool is_linked(const Cell* other) const;
+    bool is_linked(const Cell *other) const;
 
     /**
      * @brief Gets a list of cells that adjoin current cell.
-     * 
+     *
      * @return std::vector<Cell *> Vector of neighboring cells.
      */
     std::vector<Cell *> neighbors() const;
 
     /**
      * @brief Gets number of links for cell.
-     * 
+     *
      * @return std::size_t Number of links.
      */
     std::size_t links_count() const;
+
+    /**
+     * @brief Gets Cell row.
+     *
+     * @return int Row of Cell.
+     */
+    int get_row();
+
+    /**
+     * @brief Gets Cell column.
+     *
+     * @return int Column.
+     */
+    int get_col();
 };
 
 #endif // CELL_H

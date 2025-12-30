@@ -17,8 +17,30 @@ void Grid::prepare_grid()
 /** @copydoc Grid::configure_cells() */
 void Grid::configure_cells()
 {
-    // TODO: Configure cells are creating atrc() and each_cell
-    return;
+    for_each_cell([&](Cell &x)
+                  {
+                      int r = x.get_row();
+                      int c = x.get_col();
+
+                        if (r > 0)
+                            x.north = &atrc(r - 1, c);
+                        else
+                            x.north = nullptr;
+                    
+                        if (r < rows - 1)
+                            x.south = &atrc(r + 1, c);
+                        else
+                            x.south = nullptr;
+                        
+                        if (c > 0)
+                            x.west = &atrc(r, c - 1);
+                        else
+                            x.west = nullptr;
+                        
+                        if (c < columns - 1)
+                            x.east = &atrc(r, c + 1);
+                        else
+                            x.east = nullptr; });
 }
 
 /** @copydoc Grid::atrc(int r, int c) */
@@ -55,7 +77,7 @@ Cell &Grid::random_cell()
     std::random_device rnd;
     std::uniform_int_distribution<int> row_dist{0, rows - 1};
     std::uniform_int_distribution<int> col_dist{0, columns - 1};
-    
+
     int random_row = row_dist(rnd);
     int random_col = col_dist(rnd);
 
