@@ -2,6 +2,8 @@
 #define GRID_H
 
 #include "Cell.h"
+#include "bitmap_image.hpp"
+
 #include <vector>
 #include <iostream>
 
@@ -144,6 +146,12 @@ public:
      * @return std::ostream& Output stream. 
      */
     friend std::ostream& operator <<(std::ostream &os, const Grid& g);
+
+    /**
+     * @brief Renders a bitmap image of the grid.
+     * 
+     */
+    void render_bitmap();
 };
 
 #endif // GRID_H
