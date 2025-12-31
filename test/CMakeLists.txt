@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(MazesTests)
 
-add_executable(runUnitTests CellTest.cpp ../src/Cell.cpp GridTest.cpp ../src/Grid.cpp BinaryTreeTest.cpp ../src/BinaryTree.cpp)
+add_executable(runUnitTests CellTest.cpp ../src/Cell.cpp GridTest.cpp ../src/Grid.cpp BinaryTreeTest.cpp ../src/BinaryTree.cpp SidewinderTests.cpp ../src/Sidewinder.cpp)
 
 target_include_directories(runUnitTests PRIVATE ${CMAKE_SOURCE_DIR}/src/include)
 target_link_libraries(runUnitTests GTest::gtest_main)
