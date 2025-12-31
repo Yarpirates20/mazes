@@ -87,8 +87,8 @@ Cell &Grid::random_cell()
 /** @copydoc Grid::render_bitmap() */
 void Grid::render_bitmap()
 {
-    const std::size_t wall_size_x = 10;
-    const std::size_t wall_size_y = 8;
+    const std::size_t wall_size_x = 50;
+    const std::size_t wall_size_y = 45;
     const std::size_t pen_size = 2;
 
     bitmap_image image(
