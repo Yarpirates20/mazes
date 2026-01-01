@@ -28,10 +28,18 @@ public:
      * assigns with a default value and missing keys are created with default 
      * value. 
      * 
-     * @param c 
-     * @return int& 
+     * @param c Cell to map.
+     * @return int& Reference that can be assigned/read.
      */
     int &operator[](Cell *c);
+
+    /**
+     * @brief Optional-returning lookup which does not modify map.
+     * 
+     * @param c Cell key to get value for.
+     * @return std::optional<int> Returns no value when absent, else returns 
+     * value.
+     */
     std::optional<int> get(Cell * c) const;
 };
 
