@@ -5,6 +5,8 @@
 #include <unordered_set>
 #include <functional>
 
+#include "Distances.h"
+
 /**
  * @brief Cell Class Declaration
  *
@@ -96,6 +98,14 @@ public:
      * @return int Column.
      */
     int get_col();
+
+    /**
+     * @brief Implements Dijkstra's algorithm.
+     * 
+     * @return Distances Returns a Distances instance containing a matrix
+     * of distances.
+     */
+    // Distances calculated_distances();
 };
 
 #endif // CELL_H

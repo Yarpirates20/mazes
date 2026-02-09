@@ -46,7 +46,8 @@ std::vector<Cell *> Cell::get_links() const
 /** @copydoc Cell::is_linked(const Cell *other) const */
 bool Cell::is_linked(const Cell *other) const
 {
-    if (other == nullptr) return false;
+    if (other == nullptr)
+        return false;
 
     return this->links.find(const_cast<Cell *>(other)) != this->links.end();
 }
@@ -56,7 +57,7 @@ std::vector<Cell *> Cell::neighbors() const
 {
     std::vector<Cell *> neighbor_vec;
     neighbor_vec.reserve(4);
-    
+
     if (this->north)
     {
         neighbor_vec.push_back(north);
@@ -76,7 +77,6 @@ std::vector<Cell *> Cell::neighbors() const
     {
         neighbor_vec.push_back(west);
     }
-
 
     return neighbor_vec;
 }
@@ -98,3 +98,10 @@ int Cell::get_col()
 {
     return column;
 }
+
+// /** @copydoc Cell::calculated_distances() */
+// Distances Cell::calculated_distances()
+// {
+//     Distances d {this};
+    
+// }

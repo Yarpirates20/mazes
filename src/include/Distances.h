@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <optional>
 
+class Cell;
+
 class Distances
 {
 private:
@@ -41,6 +43,13 @@ public:
      * value.
      */
     std::optional<int> get(Cell * c) const;
+
+    /**
+     * @brief Gets all of the tracked cells.
+     * 
+     * @return std::vector<Cell *> Vector containing tracked Cells. 
+     */
+    std::vector<Cell *> get_cells() const;
 };
 
 #endif // DISTANCES_H

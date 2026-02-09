@@ -20,7 +20,7 @@ int main()
 
     // cout << g;
     
-    Grid g(10, 10);
+    Grid g(15, 15);
     BinaryTree bin_tree;
     bin_tree.on(g);
 

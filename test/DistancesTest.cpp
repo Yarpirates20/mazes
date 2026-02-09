@@ -2,6 +2,7 @@
 #include "Grid.h"
 
 #include <gtest/gtest.h>
+#include <algorithm>
 
 using namespace ::testing;
 
@@ -27,6 +28,21 @@ TEST_F(DistanceFunctions, SetAndGetDistance)
     EXPECT_EQ(dst[test_cell], 0);
 
     EXPECT_EQ(dst[next_cell] = 1, 1);
+
+}
+
+TEST_F(DistanceFunctions, GetCellsContainsAllTracked)
+{
+    Cell a(1,0), b(2,2);
+    dst[&a] = 7;
+    dst[&b] = 9;
+
+    auto cells = dst.get_cells();
+    EXPECT_EQ(cells.size(), 3u);
+    EXPECT_NE(std::find(cells.begin(), cells.end(), root), cells.end());
+    EXPECT_NE(std::find(cells.begin(), cells.end(), &a), cells.end());
+    EXPECT_NE(std::find(cells.begin(), cells.end(), &b), cells.end());
+
 
 }
 
